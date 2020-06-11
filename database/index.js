@@ -41,9 +41,9 @@ sqlRoutes.get('/:database',(req,res,next) => {
         Object.keys(w).forEach((o)=>{
             where+=o+' = '
             if (o.search('id') > 0){
-                where += w[o] + ' AND'
+                where += ' ' + w[o] + ' AND'
             }else{
-                where += '\''+ w[o] + '\'AND'
+                where += ' \''+ w[o] + '\'AND'
             }
         })
         q+= where.slice(0,-3)
