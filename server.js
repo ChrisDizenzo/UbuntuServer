@@ -36,7 +36,7 @@ var rooms = ['Chat1'];
 io.on('connection', (socket) => {
 
 	socket.on('USERINFO', (data) =>{
-		console.log("Name change to: " + data)
+		console.log("Name change to: " + JSON.stringify(data))
 		if (data.consumer_id){
 			axios.post(`http://tcp.chrisdizenzo.com:4000/sql/update/consumer`,{ 
 				set: { 
