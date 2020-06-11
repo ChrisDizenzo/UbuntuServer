@@ -69,7 +69,7 @@ io.on('connection', (socket) => {
 				})
 				.then(response2 => {
 					socket.emit('USERINFO', response2.body)
-					console.log(response2.body)
+					console.log('emit userinfo: ' + response2.body)
 				})
 				.catch(err => console.warn(err));
 			})
