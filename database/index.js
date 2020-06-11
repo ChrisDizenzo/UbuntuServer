@@ -111,7 +111,7 @@ sqlRoutes.post('/update/:database',(req,res) => {
             set += '\''+ queryParameter.set[o] + '\','
         }
     })
-    set = set.slice(0,-1) + " WHERE "
+    set = set.slice(0,-1)
     
     queryParameter.where
     var where = ''
