@@ -24,6 +24,7 @@ sqlRoutes.get('/',(req,res,next) => {
 
 sqlRoutes.get('/:database',(req,res,next) => {
     console.log("looking for data")
+    console.log(req.query)
     var queryParameter = JSON.parse(req.query)
     console.log(queryParameter)
 
