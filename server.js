@@ -117,6 +117,9 @@ io.on('connection', (socket) => {
 			rooms.push(newroom)
 			// chats[newroom] = []
 			console.log("Rooms is now: " + rooms)
+			axios.post(`http://tcp.chrisdizenzo.com:4000/sql/chat`,{ 
+			name: newroom,
+		 })
 		}
 		console.log(socket.display_name + " joined room: " + newroom + " and left room " + socket.room)
 		socket.leave(socket.room);
