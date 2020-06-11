@@ -23,6 +23,7 @@ sqlRoutes.get('/',(req,res,next) => {
 })
 
 sqlRoutes.get('/:database',(req,res,next) => {
+    console.log("looking for data")
     var queryParameter = req.query
 
     q = "SELECT "
@@ -62,7 +63,6 @@ sqlRoutes.get('/:database',(req,res,next) => {
             res.json(result.rows)
         }
     })
-    // res.json({test: "Creebo"})
     
 })
 
