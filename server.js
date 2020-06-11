@@ -110,7 +110,7 @@ io.on('connection', (socket) => {
 	socket.on('disconnect', function(){
 		delete display_names[socket.display_name];
 		// update list of users in chat, client-side
-		io.sockets.emit('updateusers', display_name);
+		// io.sockets.emit('updateusers', display_name);
 		// echo globally that this client has left
 		socket.leave(socket.room);
 	});
