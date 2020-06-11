@@ -37,13 +37,13 @@ sqlRoutes.get('/:database',(req,res,next) => {
     
     if (queryParameter.where){
         var w = JSON.parse(queryParameter.where)
-        var where = ' WHERE '
+        var where = ' WHERE'
         Object.keys(w).forEach((o)=>{
-            where+=o+' = '
+            where+=' ' + o+' = '
             if (o.search('id') > 0){
-                where += ' ' + w[o] + ' AND'
+                where += w[o] + ' AND'
             }else{
-                where += ' \''+ w[o] + '\'AND'
+                where += '\''+ w[o] + '\'AND'
             }
         })
         q+= where.slice(0,-3)
