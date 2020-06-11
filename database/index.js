@@ -37,16 +37,16 @@ sqlRoutes.get('/:database',(req,res,next) => {
     
     if (queryParameter.where){
         var w = JSON.parse(queryParameter.where)
-        var where = ' '
+        var where = ' WHERE '
         Object.keys(w).forEach((o)=>{
             where+=o+' = '
             if (o.search('id') > 0){
-                where += w[o] + ','
+                where += w[o] + ' AND'
             }else{
-                where += '\''+ w[o] + '\','
+                where += '\''+ w[o] + '\'AND'
             }
         })
-        q+= where.slice(0,-1)
+        q+= where.slice(0,-3)
     }
     q+= " ORDER BY " + req.params.database +  "_id DESC"
     if (queryParameter.limit){
