@@ -34,16 +34,18 @@ sqlRoutes.get('/:database',(req,res,next) => {
     }
     q+=" FROM " +req.params.database
     
-    var where = ' '
-    Object.keys(queryParameter.where).forEach((o)=>{
-        set+=o+' = '
-        if (o.search('id') > 0){
-            set += queryParameter.where[o] + ','
-        }else{
-            set += '\''+ queryParameter.where[o] + '\','
-        }
-    })
-    q+= where.slice(0,-1)
+    if (queryParameter.where){
+        var where = ' '
+        Object.keys(queryParameter.where).forEach((o)=>{
+            set+=o+' = '
+            if (o.search('id') > 0){
+                set += queryParameter.where[o] + ','
+            }else{
+                set += '\''+ queryParameter.where[o] + '\','
+            }
+        })
+        q+= where.slice(0,-1)
+    }
 
     if (queryParameter.limit){
         q+=" LIMIT " + queryParameter.limit
