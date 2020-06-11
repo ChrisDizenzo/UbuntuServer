@@ -104,7 +104,7 @@ sqlRoutes.post('/update/:database',(req,res) => {
 
     var set = ''
     Object.keys(queryParameter.set).forEach((o)=>{
-        set+=o+' = '
+        set+=' ' + o+' = '
         if (o.search('id') > 0){
             set += queryParameter.set[o] + ','
         }else{
@@ -116,11 +116,11 @@ sqlRoutes.post('/update/:database',(req,res) => {
     queryParameter.where
     var where = ''
     Object.keys(queryParameter.where).forEach((o)=>{
-        set+=' ' + o+' = '
+        where+=' ' + o+' = '
         if (o.search('id') > 0){
-            set += queryParameter.where[o] + ','
+            where += queryParameter.where[o] + ','
         }else{
-            set += '\''+ queryParameter.where[o] + '\','
+            where += '\''+ queryParameter.where[o] + '\','
         }
     })
     where = where.slice(0,-1)
