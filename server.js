@@ -59,11 +59,13 @@ io.on('connection', (socket) => {
 			.then(response => {
 				console.log("getting")
 				axios.get(`http://tcp.chrisdizenzo.com:4000/sql/consumer`,{ 
-					where: {
-						display_name: data.display_name,
-						color: data.color
-					},
-					limit: 1
+					params: {
+						where: {
+							display_name: data.display_name,
+							color: data.color
+						},
+						limit: 1
+					}
 				})
 				.then(response2 => console.log(response2.body))
 				.catch(err => console.warn(err));
