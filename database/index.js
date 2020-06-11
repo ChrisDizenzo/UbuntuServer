@@ -60,7 +60,7 @@ sqlRoutes.get('/:database',(req,res,next) => {
     console.log(q)
     client.query(q, (err,result) =>{
         if (err){
-            console.log(err)
+            // console.log(err)
         }else{
             console.log(result.rows)
             res.json(result.rows)
