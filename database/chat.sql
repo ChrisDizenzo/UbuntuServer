@@ -18,7 +18,7 @@ CREATE TABLE "consumer"
 );
 
 
-CREATE TABLE "chat_comment"
+CREATE TABLE "comment"
 (
  "comment_id"   serial NOT NULL,
  "message"      varchar(400) NOT NULL,

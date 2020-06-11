@@ -55,7 +55,7 @@ sqlRoutes.get('/:database',(req,res,next) => {
     if (queryParameter.offset){
         q+=" OFFSET " + queryParameter.limit
     }
-    q+= " ORDER BY column1, column2, ... ASC|DESC;"
+    q+= " ORDER BY " + req.params.database +  "_id DESC"
     console.log(q)
     client.query(q, (err,result) =>{
         if (err){
