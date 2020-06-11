@@ -58,6 +58,7 @@ io.on('connection', (socket) => {
 					}
 				})
 				.then(response2 => {
+					socket.consumer_id = response2.data.consumer_id
 					socket.emit('USERINFO', response2.data)
 					console.log('emit userinfo: ' + JSON.stringify(response2.data))
 				})
@@ -81,6 +82,7 @@ io.on('connection', (socket) => {
 					}
 				})
 				.then(response2 => {
+					socket.consumer_id = response2.data.consumer_id
 					socket.emit('USERINFO', response2.data)
 					console.log('emit userinfo: ' + response2.data)
 				})
@@ -99,9 +101,9 @@ io.on('connection', (socket) => {
 		// we tell the client to execute 'updatechat' with 2 parameters
 		io.sockets.in(socket.room).emit('updatechat', data);
 		// chats[socket.room].push(data)
-		axios.post(`http://tcp.chrisdizenzo.com:4000/sql/chat_comment`,{ 
+		axios.post(`http://tcp.chrisdizenzo.com:4000/sql/comment`,{ 
 			message: data.text,
-			consumer_id: 1,
+			consumer_id: data.consumer_id,
 			chat_id: socket.room.slice(-1)
 		 })
 		  .then(response => response.status)
