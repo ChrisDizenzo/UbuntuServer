@@ -116,7 +116,7 @@ sqlRoutes.post('/update/:database',(req,res) => {
     queryParameter.where
     var where = ''
     Object.keys(queryParameter.where).forEach((o)=>{
-        set+=o+' = '
+        set+=' ' + o+' = '
         if (o.search('id') > 0){
             set += queryParameter.where[o] + ','
         }else{
