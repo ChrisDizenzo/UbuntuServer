@@ -68,8 +68,8 @@ io.on('connection', (socket) => {
 					}
 				})
 				.then(response2 => {
-					socket.emit('USERINFO', response2)
-					console.log('emit userinfo: ' + response2)
+					socket.emit('USERINFO', response2.data)
+					console.log('emit userinfo: ' + response2.data)
 				})
 				.catch(err => console.warn(err));
 			})
