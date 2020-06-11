@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 var display_names = {};
 
 // rooms which are currently available in chat
-var rooms = ['Chat1'];
+var rooms = ['Home'];
 // chats = {'Chat1':[]}
 
 io.on('connection', (socket) => {
