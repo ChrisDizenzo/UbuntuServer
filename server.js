@@ -48,7 +48,20 @@ io.on('connection', (socket) => {
 				}
 			})
 			.then(response => {
-				socket.emit('USERINFO' , data)
+				axios.get(`http://tcp.chrisdizenzo.com:4000/sql/consumer`,{ 
+					params: {
+						where: {
+							display_name: data.display_name,
+							color: data.color
+						},
+						limit: 1
+					}
+				})
+				.then(response2 => {
+					socket.emit('USERINFO', response2.data)
+					console.log('emit userinfo: ' + response2.data)
+				})
+				.catch(err => console.warn(err));
 			})
 			.catch(err => console.warn(err));
 		}else{
