@@ -24,8 +24,7 @@ sqlRoutes.get('/',(req,res,next) => {
 
 sqlRoutes.get('/:database',(req,res,next) => {
     console.log("looking for data")
-    console.log(req.query)
-    var queryParameter = JSON.parse(req.query)
+    var queryParameter = req.query
     console.log(queryParameter)
 
     q = "SELECT "
@@ -37,13 +36,14 @@ sqlRoutes.get('/:database',(req,res,next) => {
     q+=" FROM " +req.params.database
     
     if (queryParameter.where){
+        var w = JSON.parse(queryParameter.where)
         var where = ' '
-        Object.keys(queryParameter.where).forEach((o)=>{
+        Object.keys(w).forEach((o)=>{
             where+=o+' = '
             if (o.search('id') > 0){
-                where += queryParameter.where[o] + ','
+                where += w[o] + ','
             }else{
-                where += '\''+ queryParameter.where[o] + '\','
+                where += '\''+ w[o] + '\','
             }
         })
         q+= where.slice(0,-1)
