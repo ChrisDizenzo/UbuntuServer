@@ -46,7 +46,7 @@ sqlRoutes.get('/:database',(req,res,next) => {
         })
         q+= where.slice(0,-1)
     }
-
+    q+= " ORDER BY " + req.params.database +  "_id DESC"
     if (queryParameter.limit){
         q+=" LIMIT " + queryParameter.limit
     }else{
@@ -55,7 +55,6 @@ sqlRoutes.get('/:database',(req,res,next) => {
     if (queryParameter.offset){
         q+=" OFFSET " + queryParameter.limit
     }
-    q+= " ORDER BY " + req.params.database +  "_id DESC"
     console.log(q)
     client.query(q, (err,result) =>{
         if (err){
