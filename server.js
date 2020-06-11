@@ -70,7 +70,7 @@ io.on('connection', (socket) => {
 			})
 			.catch(err => console.warn(err));
 		}
-		socket.display_name = display_name
+		socket.display_name = data.display_name
 		// socket.join('Home');
 		// // socket.emit('updatechat', 'SERVER', 'you have connected to Home');
 		// socket.emit('updaterooms', rooms, 'Home');
