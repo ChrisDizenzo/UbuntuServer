@@ -67,7 +67,10 @@ io.on('connection', (socket) => {
 						limit: 1
 					}
 				})
-				.then(response2 => console.log(response2.body))
+				.then(response2 => {
+					socket.emit('USERINFO', response2.body[0])
+					console.log(response2.body[0])
+				})
 				.catch(err => console.warn(err));
 			})
 			.catch(err => console.warn(err));
